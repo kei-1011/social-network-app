@@ -1,6 +1,7 @@
 <?php
 require 'config/config.php';
 require 'includes/form_handlers/register_handler.php';
+require 'includes/form_handlers/login_handler.php';
 
 ?>
 
@@ -16,11 +17,13 @@ require 'includes/form_handlers/register_handler.php';
 <body>
 
 <form action="register.php" method="post">
-<input type="email" name="log_email" placeholder="メールアドレス">
+<input type="email" name="log_email" placeholder="メールアドレス" value="<?php if(isset($_SESSION['log_email'])) { echo $_SESSION['log_email']; } ?>" required>
 <br>
 <input type="password" name="log_password" placeholder="パスワード">
 <br>
 <input type="submit" value="ログイン" name="login_button">
+<br>
+<?php if(in_array("メールアドレス又はパスワードが正しくありません。<br>",$error_array)) echo "メールアドレス又はパスワードが正しくありません。<br>";?>
 </form>
 
   <form action="register.php" method="post">
