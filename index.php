@@ -16,7 +16,6 @@ $query = mysqli_query($con, "INSERT INTO test VALUES('2','Optimus Prime')");
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SNS</title>
 </head>
-
 <body>
 
   hello world
