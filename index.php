@@ -1,11 +1,5 @@
 <?php
-$con = mysqli_connect('localhost', 'root', 'root', 'social');
-
-if (mysqli_connect_errno()) {
-  echo "接続失敗" . mysqli_connect_errno();
-}
-
-$query = mysqli_query($con, "INSERT INTO test VALUES('2','Optimus Prime')");
+require 'config/config.php';
 ?>
 
 <!DOCTYPE html>
