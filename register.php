@@ -1,6 +1,7 @@
 <?php
 require 'config/config.php';
-require 'includes/form_handlers/register_handlers.php';
+require 'includes/form_handlers/register_handler.php';
+require 'includes/form_handlers/login_handler.php';
 
 ?>
 
@@ -14,11 +15,21 @@ require 'includes/form_handlers/register_handlers.php';
 </head>
 
 <body>
+
+<form action="register.php" method="post">
+<input type="email" name="log_email" placeholder="メールアドレス" value="<?php if(isset($_SESSION['log_email'])) { echo $_SESSION['log_email']; } ?>" required>
+<br>
+<input type="password" name="log_password" placeholder="パスワード">
+<br>
+<input type="submit" value="ログイン" name="login_button">
+<br>
+<?php if(in_array("メールアドレス又はパスワードが正しくありません。<br>",$error_array)) echo "メールアドレス又はパスワードが正しくありません。<br>";?>
+</form>
+
   <form action="register.php" method="post">
     <input type="text" name="reg_fname" placeholder="姓" value="<?php if(isset($_SESSION['reg_fname'])) { echo $_SESSION['reg_fname']; } ?>" required>
     <br>
     <?php if(in_array("2文字以上25字以内で入力してください。<br>",$error_array)) echo "2文字以上25字以内で入力してください。<br>";?>
-
 
     <input type="text" name="reg_lname" placeholder="名" value="<?php if(isset($_SESSION['reg_lname'])) { echo $_SESSION['reg_lname']; } ?>" required>
     <br>
