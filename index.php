@@ -4,9 +4,8 @@ include("includes/header.php");
 // session_destroy();
 ?>
 
-  <div class="user_details column">
+    <div class="user_details column">
       <a href="#"><img src="<?php echo $user['profile_pic'];?>" alt=""></a>
-
       <div class="user_details_left_right">
         <a href="#">
         <?php
@@ -18,10 +17,15 @@ include("includes/header.php");
         echo "LIKES:" . $user['num_likes'];
         ?>
       </div>
+    </div><!-- user_details_column -->
 
+    <div class="main_column column">
+      <form action="index.php" method="post" class="post_form">
+        <textarea name="post_text" id="post_text" placeholder="言いたいこと"></textarea>
+        <input type="submit" value="送信" name="post" id="post_button">
+      </form>
     </div>
 
   </div><!-- wrapper -->
-
 </body>
 </html>
