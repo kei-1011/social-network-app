@@ -71,4 +71,4 @@ if (isset($_SESSION['username'])) {
     </div>
   </header>
 
-<div class="container">
+<div class="wrapper">

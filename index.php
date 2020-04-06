@@ -6,8 +6,12 @@ include("includes/header.php");
 
 ?>
 
-  hello world
-  </div>
+<div class="user_details column">
+  <a href="#"><img src="<?php echo $user['profile_pic'];?>" alt=""></a>
+</div>
+
+
+</div><!-- wrapper -->
 
 </body>
 </html>
