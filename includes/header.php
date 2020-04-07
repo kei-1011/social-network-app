@@ -47,7 +47,7 @@ if (isset($_SESSION['username'])) {
       <nav class="nav">
         <ul class="nav-menu">
           <li class="nav-menu__item">
-            <a href="#">
+            <a href="<?php echo $userLoggedIn; ?>">
             <?php echo $user['first_name'];?>
             </a>
           </li>
@@ -71,4 +71,4 @@ if (isset($_SESSION['username'])) {
     </div>
   </header>
 
-<div class="container">
+<div class="wrapper">
