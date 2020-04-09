@@ -1,7 +1,15 @@
 <?php
 include("includes/header.php");
+include("includes/classes/User.php");
+include("includes/classes/Post.php");
 //ページ更新でセッションを破棄する
 // session_destroy();
+
+//投稿をDBに送信する
+if(isset($_POST['post'])) {
+  $post = new Post($con,$userLoggedIn);
+  $post->submitPost($_POST['post_text'],'none');
+}
 ?>
 
     <div class="user_details column">
@@ -24,6 +32,12 @@ include("includes/header.php");
         <textarea name="post_text" id="post_text" placeholder="言いたいこと"></textarea>
         <input type="submit" value="送信" name="post" id="post_button">
       </form>
+
+        <?php
+        $user_obj = new User($con,$userLoggedIn);
+        echo $user_obj->getFirstAndLastName();
+        //オブジェクトを呼び出す
+        ?>
     </div>
 
   </div><!-- wrapper -->
