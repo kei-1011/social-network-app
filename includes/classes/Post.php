@@ -13,6 +13,11 @@ class Post {
     $body = mysqli_real_escape_string($this->con,$body);
     $check_empty = preg_replace('/\s+/','',$body);  //空白文字を削除
 
+    //文字列を別の文字列に書き換える　str_replace
+    $body = str_replace('\r\n','\n',$body);
+    $body = nl2br($body); //<br>を挿入
+
+
     if($check_empty != "") {
 
       //current data and time
