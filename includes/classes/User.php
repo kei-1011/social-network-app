@@ -11,6 +11,17 @@ class User {
     $this->user = mysqli_fetch_array($user_details_query);
     //配列に格納
   }
+  public function getUsername() {
+    return $this->user["username"];
+  }
+
+  public function getNumPosts() {
+    $username = $this->user['username'];
+    $query = mysqli_query($this->con,"SELECT num_posts FROM users WHERE username='$username'");
+    $row = mysqli_fetch_array($query);
+    return $row['num_posts'];
+  }
+
   public function getFirstAndLastName() {
     //名前を呼び出すメソッド
     $username = $this->user['username'];

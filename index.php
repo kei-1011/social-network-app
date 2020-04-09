@@ -1,8 +1,15 @@
 <?php
 include("includes/header.php");
 include("includes/classes/User.php");
+include("includes/classes/Post.php");
 //ページ更新でセッションを破棄する
 // session_destroy();
+
+//投稿をDBに送信する
+if(isset($_POST['post'])) {
+  $post = new Post($con,$userLoggedIn);
+  $post->submitPost($_POST['post_text'],'none');
+}
 ?>
 
     <div class="user_details column">
