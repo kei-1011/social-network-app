@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
-  <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-  <?php
+<?php
   require 'config/config.php';
   include("includes/classes/User.php");
   include("includes/classes/Post.php");
@@ -21,7 +12,26 @@
   } else {
     header("Location:register.php");
   }
-  ?>
+?>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+  <style>
+  * {
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  body {
+    background-color:#eee;
+  }
+  </style>
+</head>
+<body>
   <script>
     function toggle() {
       var element = document.getElementById('comment_section');

@@ -16,6 +16,7 @@ body {
 
 a {
   text-decoration: none;
+  color:#20aae5;
 }
 
 ul,li {
@@ -161,6 +162,7 @@ textarea:focus {
   font-size: 15px;
   padding: 0 5px;
   min-height: 75px;
+  cursor: pointer;
 }
 
 .post_profile_pic {
@@ -169,4 +171,42 @@ textarea:focus {
 }
 .post_profile_pic img {
   border-radius: 5px;
+}
+
+#comment_frame {
+  max-height: 300px;
+  width: 100%;
+}
+
+#comment_form {
+  padding: 10px 5px 5px 5px;
+}
+.comment_section {
+  padding: 5px;
+}
+.comment_section img{
+  margin: 0 3px 3px 3px;
+  border-radius: 3px;
+}
+
+#comment_form input[type='submit'] {
+  width: 13%;
+  height: 40px;
+  border: none;
+  border-radius: 3px;
+  background-color: #3498db;
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  outline: 0;
+  margin: 0;
+}
+#comment_form textarea {
+  width: 85%;
+  height: 40px;
+  border-radius: 3px;
+  margin-right: 5px;
+  border: 1px solid #d3d3d3;
+  font-size: 16px;
+  padding: 5px;
 }
