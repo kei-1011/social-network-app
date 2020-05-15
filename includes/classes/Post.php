@@ -67,7 +67,7 @@ class Post {
         $added_by = $row['added_by'];
         $date_time = $row['date_added'];
 
-        //prepare user_to string so it can be include even if not posted to a yser
+        //ユーザーに投稿されていなくてもインクルードできるように user_to の文字列を用意する
         if($row['user_to'] == 'none') {
           $user_to = "";
         } else {
@@ -82,92 +82,98 @@ class Post {
           continue;
         }
 
-        if($num_iterations++ < $start)
-          continue;
+        // フォローしているユーザ、自分の投稿を取得
+        $user_logged_obj = new User($this->con, $userLoggedIn);
+        if($user_logged_obj->isFriend($added_by)) {
 
-        //10の投稿が読み込まれた時点でbreak
-        if($count > $limit) {
-          break;
-        } else {
-          $count++;
+          if($num_iterations++ < $start) {
+            continue;
+          }
+
+          //10の投稿が読み込まれた時点でbreak
+          if($count > $limit) {
+            break;
+          } else {
+            $count++;
+          }
+
+          $user_details_query = mysqli_query($this->con,"SELECT first_name, last_name, profile_pic FROM users WHERE username='$added_by'");
+          $user_row = mysqli_fetch_array($user_details_query);
+          $first_name = $user_row['first_name'];
+          $last_name = $user_row['last_name'];
+          $profile_pic = $user_row['profile_pic'];
+
+
+          //タイムスタンプの取得
+          $date_time_now = date("Y-m-d H:i:s");         //現在日時
+          $start_date = new DateTime($date_time);       //投稿日時
+          $end_date = new DateTime($date_time_now);     //現在日時
+          $interval = $start_date->diff($end_date);     //経過日時
+
+          if($interval->y >= 1) { //->で1経過年を取得する
+            if($interval == 1) {
+              $time_message = $interval->y . " year ago";    //1年前
+            } else {
+              $time_message = $interval->y . " years ago";   //数年前
+            }
+          } else if ($interval->m >=1 ) {     //->mで月
+            if($interval->d ==0) {
+              $days = " ago";
+            } else if($interval->d ==1) {     //　->dで日を取得する
+              $days = $interval->d . " day ago";
+            } else {
+              $days = $interval->d . " days ago";
+            }
+
+            if($interval->m ==1) {
+              $time_message = $interval->m . " month". $days;
+            } else {
+              $time_message = $interval->m . " months". $days;
+            }
+
+
+          } else if($interval->d >=1) {
+            if($interval->d == 1) {     //　->dで日を取得する
+              $time_message = "Yesterday";
+            } else {
+              $time_message = $interval->d . " days ago";
+            }
+          } else if($interval->h >=1) {
+            if($interval->h ==1) {     //　->hで時間を取得する
+              $time_message = $interval->d . " hour ago";
+            } else {
+              $time_message = $interval->d . " hours ago";
+            }
+          } else if($interval->i >=1) {
+            if($interval->i ==1) {     //　->hで時間を取得する
+              $time_message = $interval->i . " minute ago";
+            } else {
+              $time_message = $interval->i . " minutes ago";
+            }
+          } else {
+            if($interval->s < 30) {     //　->hで時間を取得する
+              $time_message = "Just now";
+            } else {
+              $time_message = $interval->s . " seconds ago";
+            }
+          }
+
+          $str .= "<div class='status_post'>
+                      <div class='post_profile_pic'>
+                        <img src='$profile_pic' width='50'>
+                      </div>
+
+                      <div class='posted_by' style='color:#acacac;'>
+                        <a href='$added_by'> $first_name $last_name </a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message
+                      </div>
+                      <div id='post_body'>
+                        $body
+                        <br>
+                      </div>
+                  </div>
+                  <hr>";
         }
-
-        $user_details_query = mysqli_query($this->con,"SELECT first_name, last_name, profile_pic FROM users WHERE username='$added_by'");
-        $user_row = mysqli_fetch_array($user_details_query);
-        $first_name = $user_row['first_name'];
-        $last_name = $user_row['last_name'];
-        $profile_pic = $user_row['profile_pic'];
-
-
-        //タイムスタンプの取得
-        $date_time_now = date("Y-m-d H:i:s");         //現在日時
-        $start_date = new DateTime($date_time);       //投稿日時
-        $end_date = new DateTime($date_time_now);     //現在日時
-        $interval = $start_date->diff($end_date);     //経過日時
-
-        if($interval->y >= 1) { //->で1経過年を取得する
-          if($interval == 1) {
-            $time_message = $interval->y . " year ago";    //1年前
-          } else {
-            $time_message = $interval->y . " years ago";   //数年前
-          }
-        } else if ($interval->m >=1 ) {     //->mで月
-          if($interval->d ==0) {
-            $days = " ago";
-          } else if($interval->d ==1) {     //　->dで日を取得する
-            $days = $interval->d . " day ago";
-          } else {
-            $days = $interval->d . " days ago";
-          }
-
-          if($interval->m ==1) {
-            $time_message = $interval->m . " month". $days;
-          } else {
-            $time_message = $interval->m . " months". $days;
-          }
-
-
-        } else if($interval->d >=1) {
-          if($interval->d == 1) {     //　->dで日を取得する
-            $time_message = "Yesterday";
-          } else {
-            $time_message = $interval->d . " days ago";
-          }
-        } else if($interval->h >=1) {
-          if($interval->h ==1) {     //　->hで時間を取得する
-            $time_message = $interval->d . " hour ago";
-          } else {
-            $time_message = $interval->d . " hours ago";
-          }
-        } else if($interval->i >=1) {
-          if($interval->i ==1) {     //　->hで時間を取得する
-            $time_message = $interval->i . " minute ago";
-          } else {
-            $time_message = $interval->i . " minutes ago";
-          }
-        } else {
-          if($interval->s < 30) {     //　->hで時間を取得する
-            $time_message = "Just now";
-          } else {
-            $time_message = $interval->s . " seconds ago";
-          }
-        }
-
-        $str .= "<div class='status_post'>
-                    <div class='post_profile_pic'>
-                      <img src='$profile_pic' width='50'>
-                    </div>
-
-                    <div class='posted_by' style='color:#acacac;'>
-                      <a href='$added_by'> $first_name $last_name </a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message
-                    </div>
-                    <div id='post_body'>
-                      $body
-                      <br>
-                    </div>
-                </div>
-                <hr>";
-      }
+      } // End while loop
 
       if($count > $limit) {
         $str .= "
