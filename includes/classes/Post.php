@@ -178,7 +178,7 @@ class Post {
                         <a href='$added_by'> $first_name $last_name </a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;$time_message
                       </div>
                       <div id='post_body'>
-                        $body
+                      ".nl2br($body)."
                         <br>
                       </div>
                   </div>
