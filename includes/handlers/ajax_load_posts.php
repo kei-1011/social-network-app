@@ -6,5 +6,5 @@ include('../classes/Post.php');
 $limit = 10;
 
 $posts = new Post($con, $_REQUEST['userLoggedIn']);
-$posts->loadPostsFriends();
+$posts->loadPostsFriends($_REQUEST, $limit);
 ?>
