@@ -40,7 +40,7 @@
     $post_id = $_GET['post_id'];
   }
 
-  $user_query = mysqli_query($con, "SELECT added_by, user_to FROM posts WHERE id='$post_id'");
+  $user_query = mysqli_query($con, "SELECT added_by,user_to FROM posts WHERE id='$post_id'");
   $row = mysqli_fetch_array($user_query);
 
   $posted_to = $row['added_by'];
@@ -49,7 +49,7 @@
     $post_body = $_POST['post_body'];
     $post_body = mysqli_escape_string($con, $post_body);
     $date_time_now = date("Y-m-d H:i:s");
-    $insert_post = mysqli_query($con,"INSERT INTO comments VALUES('null', '$post_body', '$userLoggedIn', '$posted_to', '$date_time_now', 'no', '$post_id',)");
+    $insert_post = mysqli_query($con, "INSERT INTO comments VALUES(NULL,'$post_body', '$userLoggedIn','$posted_to','$date_time_now','no','$post_id')");
     echo "<p>Comment Posted!</p>";
   }
 ?>
