@@ -60,3 +60,78 @@
   </form>
 
 <!-- Load comments -->
+
+<?php
+$get_comments = mysqli_query($con,"SELECT * FROM comments WHERE post_id='$post_id' ORDER BY id ASC");
+$count = mysqli_num_rows($get_comments);
+
+if($count != 0) {
+  while($comment = mysqli_fetch_array($get_comments)) {
+
+    $comment_body = $comment['post_body'];
+    $posted_to = $comment['posted_to'];
+    $posted_by = $comment['posted_by'];
+    $date_added = $comment['date_added'];
+    $removed = $comment['removed'];
+
+    //タイムスタンプの取得
+    $date_time_now = date("Y-m-d H:i:s");         //現在日時
+    $start_date = new DateTime($date_added);       //投稿日時
+    $end_date = new DateTime($date_time_now);     //現在日時
+    $interval = $start_date->diff($end_date);     //経過日時
+
+    if($interval->y >= 1) { //->で1経過年を取得する
+      if($interval == 1) {
+        $time_message = $interval->y . " year ago";    //1年前
+      } else {
+        $time_message = $interval->y . " years ago";   //数年前
+      }
+    } else if ($interval->m >=1 ) {     //->mで月
+      if($interval->d ==0) {
+        $days = " ago";
+      } else if($interval->d ==1) {     //　->dで日を取得する
+        $days = $interval->d . " day ago";
+      } else {
+        $days = $interval->d . " days ago";
+      }
+
+      if($interval->m ==1) {
+        $time_message = $interval->m . " month". $days;
+      } else {
+        $time_message = $interval->m . " months". $days;
+      }
+
+
+    } else if($interval->d >=1) {
+      if($interval->d == 1) {     //　->dで日を取得する
+        $time_message = "Yesterday";
+      } else {
+        $time_message = $interval->d . " days ago";
+      }
+    } else if($interval->h >=1) {
+      if($interval->h ==1) {     //　->hで時間を取得する
+        $time_message = $interval->d . " hour ago";
+      } else {
+        $time_message = $interval->d . " hours ago";
+      }
+    } else if($interval->i >=1) {
+      if($interval->i ==1) {     //　->hで時間を取得する
+        $time_message = $interval->i . " minute ago";
+      } else {
+        $time_message = $interval->i . " minutes ago";
+      }
+    } else {
+      if($interval->s < 30) {     //　->hで時間を取得する
+        $time_message = "Just now";
+      } else {
+        $time_message = $interval->s . " seconds ago";
+      }
+    }
+    $user_obj = new User($con,$posted_by);
+  }
+}
+?>
+
+<div class="comment_section">
+  <a href="<?php echo $posted_by;?>">aaaaa</a>
+</div>
