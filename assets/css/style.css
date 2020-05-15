@@ -184,6 +184,9 @@ textarea:focus {
 .comment_section {
   padding: 5px;
 }
+.comment_section span{
+  word-break: break-word;
+}
 .comment_section img{
   margin: 0 3px 3px 3px;
   border-radius: 3px;

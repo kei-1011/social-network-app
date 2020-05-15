@@ -143,7 +143,8 @@ if($count != 0) {
       <!-- target _parentで親要素にリンクさせる -->
         <a href="<?php echo $posted_by;?>" target="_parent"><img src="<?php echo $user_obj->getProfilePic();?>" title="<?php echo $posted_by;?>" style="float:left;" height="30"></a>
         <a href="<?php echo $posted_by;?>" target="_parent"><b> <?php echo $user_obj->getFirstAndLastName();?> </b></a>
-        &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $time_message . "<br>" . $comment_body; ?>
+        &nbsp;&nbsp;&nbsp;&nbsp;<?php echo $time_message . "<br>";?>
+        <span><?php echo $comment_body; ?></span>
         <hr>
       </div>
     <?php
