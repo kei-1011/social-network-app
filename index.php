@@ -34,34 +34,63 @@ if(isset($_POST['post'])) {
         <input type="submit" value="送信" name="post" id="post_button">
       </form>
 
-        <?php
-        // $user_obj = new User($con,$userLoggedIn);
-        // echo $user_obj->getFirstAndLastName();
-        $post = new Post($con, $userLoggedIn);
-        $post->loadPostsFriends();
-        //オブジェクトを呼び出す
-        ?>
-
+         <!-- ajaxで読み込んだ投稿を挿入する -->
+        <div class="posts_area"></div>
         <img id="loading" src="/assets/images/icons/loading.gif">
     </div>
 
 
     <!-- 非同期投稿読み込み -->
     <script>
-    var userLoggedIn = '<?php echo $userLoggedIn; ?>'
+    var userLoggedIn = '<?php echo $userLoggedIn; ?>';
 
     $(function() {
 
       $('#loading').show();
 
       //最初の投稿を読み込むためのajax
-      $ajax.({
-        url:"/includes/handlers/ajax_load_posts.php",
-        type:"POST",
-        data:"page=1&userLoggedIn=" + userLoggedIn,
+      $.ajax({
+        url: 'includes/handlers/ajax_load_posts.php',
+        type: 'POST',
+        data: 'page=1&userLoggedIn=' + userLoggedIn,
         cache:false,
+
+        success: function(data) {
+          console.log(data);
+          $('#loading').hide();
+          $('.posts_area').html(data);
+        }
       });
-    });
+
+      $(window).scroll(function() {
+        var height      = $('.posts_area').height(); //posts_areaの高さ
+        var scroll_top  = $(this).scrollTop();       // topからのスクロール
+        var page        = $('.posts_area').find('.nextPage').val();
+        var noMorePosts = $('.posts_area').find('.noMorePosts').val();
+
+        if((document.body.scrollHeight == document.body.scrollTop + window.innerHeight) && noMorePosts == 'false') {
+          $('#loading').show();
+
+          //最初の投稿を読み込むためのajax
+          var ajaxReq = $.ajax({
+            url: 'includes/handlers/ajax_load_posts.php',
+            type: 'POST',
+            data: 'page=' + page +'&userLoggedIn=' + userLoggedIn,
+            cache:false,
+
+            success: function(response) {
+              $('.posts_area').find('.nextPage').remove();
+              $('.posts_area').find('.noMorePosts').remove();
+              $('#loading').hide();
+              $('.posts_area').append(response);  // 既存の投稿のしたに追加
+            }
+          });//ajax
+
+        } //endif
+
+      }); //scroll
+
+    }); // jquery
 
     </script>
 
