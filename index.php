@@ -47,27 +47,30 @@ if(isset($_POST['post'])) {
       var userLoggedIn = '<?php echo $userLoggedIn; ?>';
       var inProgress = false;
 
-      loadPosts(); //Load first posts
+      loadPosts(); // 最初の投稿を読み込む
 
         $(window).scroll(function() {
           var bottomElement = $(".status_post").last();
           var noMorePosts = $('.posts_area').find('.noMorePosts').val();
 
-            // isElementInViewport uses getBoundingClientRect(), which requires the HTML DOM object, not the jQuery object. The jQuery equivalent is using [0] as shown below.
+            // isElementInViewportではgetBoundingClientRect()を使用、
+            //これはjQueryオブジェクトではなくHTML DOMオブジェクトを必要とします。jQueryの等価は以下のように[0]を使用
             if (isElementInView(bottomElement[0]) && noMorePosts == 'false') {
                 loadPosts();
             }
         });
 
         function loadPosts() {
-            if(inProgress) { //If it is already in the process of loading some posts, just return
+            if(inProgress) {
+              //すでにいくつかの記事をロードしている場合
           return;
         }
 
         inProgress = true;
         $('#loading').show();
 
-        var page = $('.posts_area').find('.nextPage').val() || 1; //If .nextPage couldn't be found, it must not be on the page yet (it must be the first time loading posts), so use the value '1'
+        var page = $('.posts_area').find('.nextPage').val() || 1;
+        //.nextPageが見つからなかった場合は、まだページ上にないはず(記事の読み込みが初めての場合)、値'1'を使用する
 
         $.ajax({
           url: "includes/handlers/ajax_load_posts.php",
