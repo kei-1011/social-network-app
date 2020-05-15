@@ -41,7 +41,29 @@ if(isset($_POST['post'])) {
         $post->loadPostsFriends();
         //オブジェクトを呼び出す
         ?>
+
+        <img id="loading" src="/assets/images/icons/loading.gif">
     </div>
+
+
+    <!-- 非同期投稿読み込み -->
+    <script>
+    var userLoggedIn = '<?php echo $userLoggedIn; ?>'
+
+    $(function() {
+
+      $('#loading').show();
+
+      //最初の投稿を読み込むためのajax
+      $ajax.({
+        url:"/includes/handlers/ajax_load_posts.php",
+        type:"POST",
+        data:"page=1&userLoggedIn=" + userLoggedIn,
+        cache:false,
+      });
+    });
+
+    </script>
 
   </div><!-- wrapper -->
 </body>
