@@ -149,6 +149,8 @@ if($count != 0) {
       </div>
     <?php
   }
+} else {
+  echo "<center><br><br>No Comments to Show!</center>";
 }
 ?>
 </body>

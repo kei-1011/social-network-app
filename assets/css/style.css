@@ -213,3 +213,10 @@ textarea:focus {
   font-size: 16px;
   padding: 5px;
 }
+
+.newsfeedPostOptions {
+  padding: 0;
+  text-decoration: none;
+  color:#3498db;
+  border:none;
+}
