@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
   <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+  body {
+    background-color: #fff;
+  }
+  </style>
 </head>
 <body>
 <?php
@@ -51,11 +56,11 @@ if(isset($_POST['like_button'])) {
 // unlike button
 if(isset($_POST['unlike_button'])) {
   $total_likes--;
-  $query = mysqli_query($con, "UPDATE posts SET likes='$total_likes' WHERE post_id='$post_id'");
+  $query = mysqli_query($con, "UPDATE posts SET likes='$total_likes' WHERE id='$post_id'");
   $total_user_likes--;
   $user_likes = mysqli_query($con,"UPDATE users SET num_likes='$total_user_likes' WHERE username='$user_liked'");
 
-  $insert_user = mysqli_query($con,"DELETE FROM likes username='$userLoggedIn' AND post_id='$post_id'");
+  $insert_user = mysqli_query($con,"DELETE FROM likes WHERE username='$userLoggedIn' AND post_id='$post_id'");
   // Insert Notification
 }
 
