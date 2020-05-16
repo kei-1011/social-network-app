@@ -16,7 +16,7 @@ if(isset($_POST['post'])) {
     <div class="user_details column">
       <a href="<?php echo $userLoggedIn; ?>"><img src="<?php echo $user['profile_pic'];?>" alt=""></a>
       <div class="user_details_left_right">
-        <a href="<?php echo $userLoggedIn; ?>">
+        <a href="<?php echo $userLoggedIn; // htaccess でurlを制御?>">
         <?php
         echo $user['first_name'] . " " . $user['last_name'];
         ?>
