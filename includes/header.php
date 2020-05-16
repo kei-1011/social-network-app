@@ -26,7 +26,7 @@ if (isset($_SESSION['username'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SNS</title>
+  <title>Social Book</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="/assets/css/style.css">
 
@@ -40,7 +40,7 @@ if (isset($_SESSION['username'])) {
   <header class="top_bar">
     <div class="inner">
       <div class="logo">
-        <a href="index.php">SNS App</a>
+        <a href="index.php">Social Book</a>
       </div>
 
       <nav class="nav">

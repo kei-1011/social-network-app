@@ -69,16 +69,16 @@ $check_query = mysqli_query($con,"SELECT * FROM likes WHERE username='$userLogge
 $num_rows = mysqli_num_rows($check_query);
 if($num_rows > 0) {
   echo '<form action="like.php?post_id='.$post_id.'" method="POST">
-          <input type="submit" class="comment_like" name="unlike_button" value="Unlike">
+          <input type="submit" class="comment_like" name="unlike_button" value="いいね">
           <div class="like_value">
-            '.$total_likes.' Likes
+            '.$total_likes.' <span class="good_text">いいね</span>
           </div>
         </form>';
 } else {
   echo '<form action="like.php?post_id='.$post_id.'" method="POST">
-          <input type="submit" class="comment_like" name="like_button" value="Like">
+          <input type="submit" class="comment_like" name="like_button" value="いいね">
           <div class="like_value">
-            '.$total_likes.' Likes
+          '.$total_likes.' <span class="good_text">いいね</span>
           </div>
         </form>';
 }

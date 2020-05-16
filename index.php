@@ -22,8 +22,8 @@ if(isset($_POST['post'])) {
         ?>
         </a>
         <?php
-        echo "POSTS:" . $user['num_posts']. "<br>";
-        echo "LIKES:" . $user['num_likes'];
+        echo "<p>投稿数:" . $user['num_posts']. "</p>";
+        echo "<p>いいね:" . $user['num_likes']. "</p>";
         ?>
       </div>
     </div><!-- user_details_column -->

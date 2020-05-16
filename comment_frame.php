@@ -66,7 +66,7 @@
 
   <form action="comment_frame.php?post_id=<?php echo $post_id;?>" id="comment_form" name="postComment<?php echo $post_id; ?>" method="post">
     <textarea name="post_body"></textarea>
-    <input type="submit" name="postComment<?php echo $post_id;?>" value="Post">
+    <input type="submit" name="postComment<?php echo $post_id;?>" value="送信">
   </form>
 
 <!-- Load comments -->
