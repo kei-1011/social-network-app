@@ -18,6 +18,13 @@ if(isset($_GET['profile_username'])) {
 
 ?>
 
+  <style>
+  .wrapper {
+    height: 100%;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  </style>
   <div class="profile_left">
     <img src="<?php echo $user_array['profile_pic'];?>">
 
