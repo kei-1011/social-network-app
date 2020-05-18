@@ -65,13 +65,13 @@ if(isset($_POST['respond_request'])) {
     if($userLoggedIn != $username) {
 
       if($logged_in_user_obj->isFriend($username)) {
-        echo '<input type="submit" name="remove_friend" class="danger" value="Remove Friend"><br>';
+        echo '<input type="submit" name="remove_friend" class="danger" value="友達を削除する"><br>';
       } else if ($logged_in_user_obj->didReceiveRequest($username)) {
-        echo '<input type="submit" name="respond_request" class="warning" value="Respond to request"><br>';
+        echo '<input type="submit" name="respond_request" class="warning" value="リクエストに応じる"><br>';
       } else if ($logged_in_user_obj->didSendRequest($username)) {
-        echo '<input type="submit" name="" class="default" value="Request send"><br>';
+        echo '<input type="submit" name="" class="default" value="リクエスト送信"><br>';
       } else {
-        echo '<input type="submit" name="add_friend" class="success" value="Add friend"><br>';
+        echo '<input type="submit" name="add_friend" class="success" value="友達追加"><br>';
       }
 
 
