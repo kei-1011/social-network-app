@@ -5,7 +5,7 @@ include("includes/classes/Post.php");
 
 ?>
 
-<div class="main_column colum" id="main_column">
+<div class="main_column column" id="main_column">
   <h4>友達リクエスト</h4>
 
   <?php
