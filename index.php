@@ -11,6 +11,7 @@ if(isset($_POST['post'])) {
   $post->submitPost($_POST['post_text'],'none');
   header("Location:index.php"); // フォームの再送信を防止する
 }
+
 ?>
 
     <div class="user_details column">
