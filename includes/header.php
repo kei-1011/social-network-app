@@ -1,6 +1,7 @@
 <?php
 require 'config/config.php';
-
+include("includes/classes/User.php");
+include("includes/classes/Post.php");
 /*
 ログイン時に、セッションにusernameを保存していた
 usernameがあれば、ログインしている状態であり、

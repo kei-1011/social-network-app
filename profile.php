@@ -24,19 +24,18 @@ if(isset($_POST['remove_friend'])) {
   $user->removeFriend($username);
 }
 
+// リクエスト
 if(isset($_POST['add_friend'])) {
   $user = new User($con, $userLoggedIn);
   $user->sendRequest($username);
 }
 
+//
 if(isset($_POST['respond_request'])) {
   header("Location: requests.php");
 }
 
-
-
 ?>
-
   <style>
   .wrapper {
     height: 100%;

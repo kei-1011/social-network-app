@@ -2,7 +2,6 @@
 class User {
   private $user;
   private $con;
-
   public function __construct($con,$user){
     //クラスが呼び出されたらまず実行される
     $this->con = $con;
@@ -37,6 +36,13 @@ class User {
     $query = mysqli_query($this->con,"SELECT profile_pic FROM users WHERE username='$username'");
     $row = mysqli_fetch_array($query);
     return $row['profile_pic'];
+  }
+
+  public function getFriendArray() {
+    $username = $this->user['username'];
+    $query = mysqli_query($this->con,"SELECT friend_array FROM users WHERE username='$username'");
+    $row = mysqli_fetch_array($query);
+    return $row['friend_array'];
   }
 
   public function isClosed() {
