@@ -78,6 +78,7 @@ ul,li {
   font-size:16px;
   margin-right: 10px;
   line-height: 40px;
+  transition:opacity 0.4s;
 }
 .nav-menu__item a:hover {
   opacity:0.7;
@@ -258,4 +259,88 @@ textarea:focus {
 
 .good_text {
   font-size: 12px;
+}
+
+
+.profile_left {
+  top:-10px;
+  width: 20%;
+  max-width: 240px;
+  min-width: 130px;
+  height: 100%;
+  float: left;
+  position: relative;
+  background-color: #37b0e9;
+  border-right:8px solid #83d6fe;
+  color: #fff;
+  margin-right: 20px;
+}
+
+.profile_left img {
+  border-radius: 100px;
+  max-width: 80px;
+  display: block;
+  margin: 20px auto;
+  border:2px solid #fff;
+}
+
+.profile_info {
+  width: 100%;
+  padding: 10px;
+  background-color: #1894ca;
+}
+
+.profile_info p {
+  margin: 0 0 0 20px;
+  word-wrap: break-word;
+}
+
+
+.danger {
+  background-color: #e74c3c;
+}
+.warning {
+  background-color: #f0ab4e;
+}
+.default {
+  background-color: #dbc3c7;
+}
+.success {
+  background-color: #2ecc71;
+}
+.info {
+  background-color: #3498db;
+}
+.deep_blue {
+  background-color: #0043f0;
+}
+
+.profile_left input[type="submit"] {
+  width: 80%;
+  height: 30px;
+  border-radius: 3px;
+  margin: 10px auto;
+  display: block;
+  border: none;
+  color: #fff;
+}
+
+#accept_button {
+  width: 20%;
+  height: 28px;
+  border-radius: 5px;
+  margin: 5px;
+  border: none;
+  color: #fff;
+  background-color: #2ecc71;
+}
+
+#ignore_button {
+  width: 20%;
+  height: 28px;
+  border-radius: 5px;
+  margin: 5px;
+  border: none;
+  color: #fff;
+  background-color: #e74c3c;
 }

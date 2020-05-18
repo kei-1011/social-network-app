@@ -17,6 +17,7 @@ body {
 a {
   text-decoration: none;
   color:#3498db;
+  font-size: 14px;
 }
 
 .reg_wrap {
@@ -53,11 +54,11 @@ a {
 }
 .login_header h1{
   font-size:200%;
-  color:#2c6c96;
-  text-shadow: #73b6e2 0.5px 0.5px 3px;
+  color:#fff;
 }
 .login_header .text{
-  font-size:18px;
+  font-size:14px;
+  margin-top: 10px;
 }
 
 .form {
@@ -70,8 +71,7 @@ a {
   border-radius: 3px;
   margin: 5px 0 10px 0;
   padding: 5px 10px;
-  color:#2c6c96;
-  text-shadow: #73b6e2 0.5px 0.5px 3px;
+  color:#fff;
   font-weight: 600;
 }
 .form_input {

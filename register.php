@@ -37,7 +37,7 @@ if(isset($_POST['register_button'])) {
 
   <div class="login_box">
     <div class="login_header">
-      <h1>SNS App</h1>
+      <h1>Social Book</h1>
       <p class="text">ログイン又はサインイン</p>
     </div>
     <!-- header -->
