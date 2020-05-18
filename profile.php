@@ -19,6 +19,22 @@ if(isset($_GET['profile_username'])) {
   $num_friends = (substr_count($user_array['friend_array'],",")) - 1;  // '," を数える？
 }
 
+if(isset($_POST['remove_friend'])) {
+  $user = new User($con, $userLoggedIn);
+  $user->removeFriend($username);
+}
+
+if(isset($_POST['add_friend'])) {
+  $user = new User($con, $userLoggedIn);
+  $user->sendRequest($username);
+}
+
+if(isset($_POST['respond_request'])) {
+  header("Location: requests.php");
+}
+
+
+
 ?>
 
   <style>
@@ -37,7 +53,7 @@ if(isset($_GET['profile_username'])) {
       <p><?php echo "フォロワー:". $num_friends;?></p>
     </div>
 
-    <form action="<?php echo $username; ?>">
+    <form action="<?php echo $username; ?>" method="post">
     <?php
     $profile_user_obj = new User($con, $username);
 
@@ -50,7 +66,7 @@ if(isset($_GET['profile_username'])) {
     if($userLoggedIn != $username) {
 
       if($logged_in_user_obj->isFriend($username)) {
-        echo '<input type="submit" name="name_friend" class="danger" value="Remove Friend"><br>';
+        echo '<input type="submit" name="remove_friend" class="danger" value="Remove Friend"><br>';
       } else if ($logged_in_user_obj->didReceiveRequest($username)) {
         echo '<input type="submit" name="respond_request" class="warning" value="Respond to request"><br>';
       } else if ($logged_in_user_obj->didSendRequest($username)) {
