@@ -77,7 +77,7 @@ if(isset($_POST['respond_request'])) {
     ?>
     </form>
     <div class="text-center">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#post_form">Post something</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#post_form">投稿する</button>
     </div>
 
   </div>
@@ -92,14 +92,14 @@ if(isset($_POST['respond_request'])) {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Post something</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">投稿する</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
 
         <div class="modal-body">
-          <p>This will appear on the users profile page and also their newsfeed for your friends to see!</p>
+          <p>これは、ユーザーのプロフィールページやニュースフィードに表示され、お友達にも見てもらえるようになります。</p>
         </div>
 
         <form class="profile_post" action="" method="post">
@@ -111,8 +111,8 @@ if(isset($_POST['respond_request'])) {
         </form>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">post</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+          <button type="button" class="btn btn-primary">投稿</button>
         </div>
       </div>
     </div>
