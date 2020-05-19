@@ -112,7 +112,7 @@ if(isset($_POST['respond_request'])) {
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-          <button type="button" class="btn btn-primary">投稿</button>
+          <button type="button" class="btn btn-primary" name="post_button" id="submit_profile_post">投稿</button>
         </div>
       </div>
     </div>
