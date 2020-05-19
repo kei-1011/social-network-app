@@ -73,18 +73,50 @@ if(isset($_POST['respond_request'])) {
       } else {
         echo '<input type="submit" name="add_friend" class="success" value="友達追加"><br>';
       }
-
-
     }
     ?>
     </form>
+    <div class="text-center">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#post_form">Post something</button>
+    </div>
 
   </div>
 
   <div class="main_column column">
   <?php print($username); ?>
+
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="post_form" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Post something</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <p>This will appear on the users profile page and also their newsfeed for your friends to see!</p>
+        </div>
+
+        <form class="profile_post" action="" method="post">
+          <div class="form-group">
+            <textarea class="form-control" name="post_body"></textarea>
+            <input type="hidden" value="user_from" value="<?php echo $userLoggedIn;?>">
+            <input type="hidden" value="user_to" value="<?php echo $username;?>">
+          </div>
+        </form>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">post</button>
+        </div>
+      </div>
+    </div>
+  </div>
   </div><!-- wrapper -->
 </body>
 </html>
