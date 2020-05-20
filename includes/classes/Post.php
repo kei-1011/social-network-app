@@ -213,7 +213,7 @@ class Post {
 
         $(function() {
 
-          $('$post<?php echo $id;?>').on('click',function() {
+          $('#post<?php echo $id;?>').on('click',function() {
             bootbox.confirm("この投稿を削除しますか？", function(result) {
               $.post("/includes/form_handlers/delete_post.php?post_id=<?php echo $id;?>", {result:result});
 
