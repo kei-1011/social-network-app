@@ -159,9 +159,9 @@ if (isset($_POST['x'])){
     <p><b> <?=$msg?> </b></p>
 
     <form action="upload.php" method="post"  enctype="multipart/form-data">
-        Upload something<br /><br />
-        <input type="file" id="image" name="image" style="width:200px; height:30px; " /><br /><br />
-        <input type="submit" value="Submit" style="width:85px; height:25px;" />
+        プロフィール写真をアップロード<br /><br />
+        <input type="file" id="image" name="image" /><br /><br />
+        <input type="submit" value="送信" style="width:85px; height:25px;" />
     </form><br /><br />
 
 	</div> <!-- Form-->
@@ -181,11 +181,10 @@ if (isset($_POST['x'])){
 
           <div id="InfoArea" style="width:180px; height:150px; position:relative; overflow:hidden; margin:40px 0px 0px 40px; border:0px #666 solid; float:left;">
               <p style="margin:0px; padding:0px; color:#444; font-size:18px;">
-                  <b>Crop Profile Image</b><br /><br />
+                  <b>プロフィール写真の切り取り</b><br /><br />
                   <span style="font-size:14px;">
-                      Crop / resize your uploaded profile image. <br />
-                      Once you are happy with your profile image then please click save.
-
+											アップロードしたプロフィール画像のトリミング/サイズ変更ができます。<br>
+											プロフィール画像に問題がなければ、保存をクリックしてください。
                   </span>
               </p>
           </div>
@@ -200,13 +199,13 @@ if (isset($_POST['x'])){
                   <input type="hidden" id="h" name="h" />
                   <input type="hidden" value="jpeg" name="type" /> <?php // $type ?>
                   <input type="hidden" value="<?=$src?>" name="src" />
-                  <input type="submit" value="Save" style="width:100px; height:30px;"   />
+                  <input type="submit" value="保存" style="width:100px; height:30px;"   />
               </form>
           </div>
 
           <div id="CropImageForm2" style="width:100px; height:30px; float:left; margin:10px 0px 0px 40px;" >
               <form action="upload.php" method="post" onsubmit="return cancelCrop();">
-                  <input type="submit" value="Cancel Crop" style="width:100px; height:30px;"   />
+                  <input type="submit" value="キャンセル" style="width:100px; height:30px;"   />
               </form>
           </div>
 
