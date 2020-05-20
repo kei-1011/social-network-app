@@ -354,3 +354,7 @@ textarea:focus {
   position: relative;
   right: -15px;
 }
+
+.profile_info_bottom {
+  margin:10px 20px;
+}

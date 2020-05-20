@@ -83,7 +83,7 @@ if(isset($_POST['respond_request'])) {
     <?php
     if($userLoggedIn != $username) {
       echo '<div class="profile_info_bottom">';
-      echo $logged_in_user_obj->getMutualFriends($username);
+      echo $logged_in_user_obj->getMutualFriends($username) . "Mutual friends";
       echo '</div>';
     }
 
