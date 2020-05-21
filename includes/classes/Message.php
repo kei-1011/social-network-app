@@ -28,7 +28,6 @@ class Message {
     } else {
       return $user_from;
     }
-
   }
 
 }
