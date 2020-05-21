@@ -1,7 +1,6 @@
 <?php
 include("includes/header.php");
-include("includes/classes/User.php");
-include("includes/classes/Post.php");
+
 //ページ更新でセッションを破棄する
 // session_destroy();
 

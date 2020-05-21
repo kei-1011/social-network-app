@@ -21,14 +21,13 @@ class User {
     return $row['num_posts'];
   }
 
+  //名前を呼び出すメソッド
   public function getFirstAndLastName() {
-    //名前を呼び出すメソッド
-    $username = $this->user['username'];
-    $query = mysqli_query($this->con,"SELECT first_name,last_name FROM users WHERE username='$username'");
-    $row = mysqli_fetch_array($query);
+		$username = $this->user['username'];
+		$query = mysqli_query($this->con, "SELECT first_name, last_name FROM users WHERE username='$username'");
+		$row = mysqli_fetch_array($query);
     return $row['first_name'] . " " . $row['last_name'];
   }
-
 
   //プロフィール写真を取得
   public function getProfilePic() {
